@@ -66,6 +66,8 @@ class QuoteResource extends Resource
                         'redo',
                         'strike',
                         'undo',
+                        'orderedList',
+                        'bulletList',
                     ]),
 
             ]);
