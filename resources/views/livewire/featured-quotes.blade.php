@@ -13,11 +13,25 @@
 
     <div class="grid md:grid-cols-3 gap-4 max-w-screen-xl mx-auto py-4 px-4">
         @foreach($quotes as $quote)
-            <div class="bg-gray-50 rounded-lg border text-center px-4 py-6 shadow-xl"
+            <div class="bg-gray-50 rounded-lg border text-center px-4 py-4 shadow-xl"
                  data-aos="fade-right"
                  data-aos-duration="1000">
-                {{$quote->content}}
+                <div class="flex flex-col justify-between h-full">
+                    <p class="prose">
+                        {!! str($quote->content)->markdown()->toHtmlString() !!}
+                    </p>
+
+                    <div class="text-right mt-6">
+                        <p class="text-gray-700">
+                            -- {{$quote->author->name}}
+                        </p>
+                        <p class="text-gray-500 text-sm">
+                            {{$quote->author->profession}}
+                        </p>
+                    </div>
+                </div>
             </div>
+
         @endforeach
     </div>
 
