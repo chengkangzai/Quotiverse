@@ -10,9 +10,11 @@
         </x-slot>
 
         <x-slot name="description">
-            {{ $quote->author->name }} @if($quote->author->profession) ({{ $quote->author->profession }}) @endif
+            {{ $quote->author->name }} @if ($quote->author->profession)
+                ({{ $quote->author->profession }})
+            @endif
         </x-slot>
 
-            {{ $quote->content }}
+        {{ $quote->content }}
     </x-filament::section>
 </x-filament-widgets::widget>

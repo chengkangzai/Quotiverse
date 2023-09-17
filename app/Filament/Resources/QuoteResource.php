@@ -34,7 +34,7 @@ class QuoteResource extends Resource
                     TextEntry::make('author.profession')
                         ->columnSpan(1)
                         ->label('Author profession'),
-                ])->columns(2)
+                ])->columns(2),
             ]);
     }
 
