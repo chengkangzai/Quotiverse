@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Quote extends Model
 {
-    use SoftDeletes, HasFactory;
+    use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'content',
