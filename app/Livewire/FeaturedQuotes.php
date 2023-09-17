@@ -34,9 +34,7 @@ class FeaturedQuotes extends Component
 
     private function getQuotes(): void
     {
-        $this->quotes = Quote::inRandomOrder()
-            ->limit($this->limit)
-            ->get();
+        $this->quotes = Quote::limit($this->limit)->get();
 
         if ($this->quotes->count() <= 0) {
             $this->stillCanLoad = false;
