@@ -14,7 +14,7 @@ class Author extends Model
 
     protected $fillable = [
         'name',
-        'title',
+        'profession',
     ];
 
     public function quotes(): HasMany

@@ -25,7 +25,7 @@ class AuthorResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('title')
+                Forms\Components\TextInput::make('profession')
                     ->maxLength(255),
             ]);
     }
@@ -36,7 +36,7 @@ class AuthorResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('title')
+                Tables\Columns\TextColumn::make('profession')
                     ->searchable(),
 
                 Tables\Columns\TextColumn::make('deleted_at')

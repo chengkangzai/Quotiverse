@@ -14,7 +14,7 @@ class AuthorFactory extends Factory
     {
         return [
             'name' => $this->faker->name(),
-            'title' => $this->faker->jobTitle(),
+            'profession' => $this->faker->jobTitle(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ];

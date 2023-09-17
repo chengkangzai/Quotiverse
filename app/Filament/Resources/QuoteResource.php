@@ -31,9 +31,9 @@ class QuoteResource extends Resource
                     TextEntry::make('author.name')
                         ->columnSpan(1)
                         ->label('Author'),
-                    TextEntry::make('author.title')
+                    TextEntry::make('author.profession')
                         ->columnSpan(1)
-                        ->label('Author Job Title'),
+                        ->label('Author profession'),
                 ])->columns(2)
             ]);
     }
@@ -50,7 +50,7 @@ class QuoteResource extends Resource
                         Forms\Components\TextInput::make('name')
                             ->required()
                             ->maxLength(255),
-                        Forms\Components\TextInput::make('title')
+                        Forms\Components\TextInput::make('profession')
                             ->maxLength(255),
                     ])
                     ->required(),
