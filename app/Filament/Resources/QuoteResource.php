@@ -5,6 +5,9 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\QuoteResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\Section;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -14,6 +17,26 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class QuoteResource extends Resource
 {
     protected static ?string $navigationIcon = 'heroicon-o-chat-bubble-bottom-center-text';
+
+    public static function infolist(Infolist $infolist): Infolist
+    {
+        return $infolist
+            ->schema([
+                Section::make([
+                    TextEntry::make('content')
+                        ->columnSpanFull(),
+                ]),
+
+                Section::make([
+                    TextEntry::make('author.name')
+                        ->columnSpan(1)
+                        ->label('Author'),
+                    TextEntry::make('author.title')
+                        ->columnSpan(1)
+                        ->label('Author Job Title'),
+                ])->columns(2)
+            ]);
+    }
 
     public static function form(Form $form): Form
     {
