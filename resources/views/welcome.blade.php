@@ -16,7 +16,7 @@
                 I'm CCK, welcome to my
             </h1>
             <p class="mb-4 text-4xl lg:text-5xl font-extrabold leading-none tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-sky-500">
-                Quoteniverse
+                {{config('app.name')}}
             </p>
             <p class="mb-8 text-lg font-normal text-gray-500 dark:text-gray-400 sm:px-16 lg:text-xl xl:px-48">
                 Here are some of my favorite quotes. I hope you enjoy them as much as I do.
@@ -28,7 +28,7 @@
                     Check it out!
                     <x-heroicon-o-arrow-down class="-mr-1 ml-2 h-5 w-5 text-white"/>
                 </a>
-                <a href="#"
+                <a href="https://chengkangzai.com"
                    class="inline-flex items-center justify-center rounded-lg border border-gray-300 py-3 px-5 text-center text-base font-medium text-gray-900 hover:bg-gray-100 focus:ring-4 focus:ring-gray-100 dark:border-gray-700 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-800">
                     Check out my portfolio
                     <x-heroicon-m-arrow-right class="-ml-1 mr-2 h-5 w-5 text-gray-500"/>
