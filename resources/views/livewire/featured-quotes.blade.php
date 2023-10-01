@@ -10,38 +10,22 @@
         </h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-4 max-w-screen-xl mx-auto py-4 px-4">
+    <div class="max-w-screen-xl p-4 mx-auto flex flex-col gap-2">
         @foreach($quotes as $quote)
-            <div class="bg-gray-50 rounded-lg border text-center px-4 py-4 shadow-xl"
+            <div class="bg-gray-50 rounded py-2 px-8"
                  data-aos="fade-right"
                  data-aos-duration="1000">
-                <div class="flex flex-col justify-between h-full">
-                    <p class="prose">
-                        {!! str($quote->content)->markdown()->toHtmlString() !!}
+                    <p class="text-xl">
+                        {!! $quote->content !!}
                     </p>
-
-                    <div class="text-right mt-6">
-                        <p class="text-gray-700">
-                            -- {{$quote->author->name}}
-                        </p>
-                        <p class="text-gray-500 text-sm">
-                            {{$quote->author->profession}}
-                        </p>
-                    </div>
+                <div>
+                    <p class="text-gray-700 text-sm">
+                        -- {{$quote->author->name}}
+                        (<span class="text-gray-500 text-xs">{{$quote->author->profession}}</span>)
+                    </p>
                 </div>
             </div>
-
         @endforeach
-    </div>
-
-    <div class="max-w-screen-xl mx-auto flex">
-        @if($stillCanLoad)
-            <button wire:click="loadMore"
-                    class="bg-sky-400 hover:bg-sky-500 focus:ring-sky-300 dark:focus:ring-sky-900 inline-flex items-center justify-center rounded-lg py-3 px-5 text-center text-base font-medium text-white focus:ring-4 mx-auto">
-                Load More Quotes
-                <x-heroicon-o-arrow-down class="-mr-1 ml-2 h-5 w-5 text-white"/>
-            </button>
-        @endif
     </div>
 
     @push('scripts')

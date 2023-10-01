@@ -14,16 +14,8 @@ class FeaturedQuotes extends Component
 
     public bool $stillCanLoad = true;
 
-    public int $limit = 6;
-
     public function mount(): void
     {
-        $this->getQuotes();
-    }
-
-    public function loadMore(): void
-    {
-        $this->limit += 6;
         $this->getQuotes();
     }
 
@@ -34,15 +26,10 @@ class FeaturedQuotes extends Component
 
     private function getQuotes(): void
     {
-        $this->quotes = Quote::limit($this->limit)->get();
-
-        if ($this->quotes->count() <= 0) {
-            $this->stillCanLoad = false;
-        }
-
-        $totalCanLoad = Quote::count();
-        if ($totalCanLoad < $this->limit) {
-            $this->stillCanLoad = false;
-        }
+        $this->quotes = cache()->remember(
+            key: 'featured-quotes',
+            ttl: 60 * 60 * 24,
+            callback: fn() => Quote::all()
+        );
     }
 }
