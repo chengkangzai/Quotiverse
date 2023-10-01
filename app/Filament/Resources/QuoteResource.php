@@ -88,13 +88,18 @@ class QuoteResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('content')
                     ->searchable()
-                    ->limit(50),
+                    ->grow(),
                 Tables\Columns\TextColumn::make('author.name')
                     ->searchable()
                     ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
+                Tables\Filters\SelectFilter::make('author_id')
+                    ->label('Author')
+                    ->relationship('author', 'name')
+                    ->searchable()
+                    ->preload(),
             ])
             ->actions([
                 Tables\Actions\ViewAction::make(),
