@@ -53,6 +53,7 @@ class QuoteSeeder extends Seeder
             ->create([
                 'name' => '柯文哲 Ko Wen-je',
                 'profession' => 'Mayor of Taipei',
+                'avatar_url' => 'https://media.licdn.com/dms/image/C5603AQGQbdfbeyQytQ/profile-displayphoto-shrink_800_800/0/1619156814581?e=1701907200&v=beta&t=56va_-L56dbVCwBrOZW-lHGCC1wSlIrda1Mt6z-0U00',
             ]);
     }
 }
