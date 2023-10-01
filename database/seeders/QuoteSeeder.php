@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\Author;
 use App\Models\Quote;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class QuoteSeeder extends Seeder
 {
@@ -49,11 +50,18 @@ class QuoteSeeder extends Seeder
 
     private function createAuthor(): Author
     {
+        if (!Storage::disk()->exists('ko_wen-je.jpg')) {
+            Storage::disk('public')
+                ->put(path: 'ko_wen-je.jpg',
+                    contents: file_get_contents('https://media.licdn.com/dms/image/C5603AQGQbdfbeyQytQ/profile-displayphoto-shrink_800_800/0/1619156814581?e=1701907200&v=beta&t=56va_-L56dbVCwBrOZW-lHGCC1wSlIrda1Mt6z-0U00')
+                );
+        }
+
         return Author::factory()
             ->create([
                 'name' => '柯文哲 Ko Wen-je',
                 'profession' => 'Mayor of Taipei',
-                'avatar_url' => 'https://media.licdn.com/dms/image/C5603AQGQbdfbeyQytQ/profile-displayphoto-shrink_800_800/0/1619156814581?e=1701907200&v=beta&t=56va_-L56dbVCwBrOZW-lHGCC1wSlIrda1Mt6z-0U00',
+                'avatar_url' => 'ko_wen-je.jpg',
             ]);
     }
 }

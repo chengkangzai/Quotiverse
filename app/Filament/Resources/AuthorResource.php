@@ -32,13 +32,8 @@ class AuthorResource extends Resource
                 Forms\Components\Section::make('Avatar')
                     ->columnSpan(1)
                     ->schema([
-                        Forms\Components\TextInput::make('avatar_url')
-                            ->reactive()
-                            ->label('Avatar URL'),
-
-                        Forms\Components\Placeholder::make('image_preview')
-                            ->visible(fn (Forms\Get $get) => $get('avatar_url') !== null)
-                            ->content(fn (Forms\Get $get) => new HtmlString('<img src="'.$get('avatar_url').'" alt="Avatar" class="w-32 shadow-sm">')),
+                        Forms\Components\FileUpload::make('avatar_url')
+                            ->image(),
                     ]),
             ]);
     }
@@ -74,7 +69,7 @@ class AuthorResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-                    ->visible(fn ($record) => $record->quotes()->doesntExist()),
+                    ->visible(fn($record) => $record->quotes()->doesntExist()),
                 Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
