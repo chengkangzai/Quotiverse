@@ -35,14 +35,14 @@ class QuoteResource extends Resource
                     ->columnSpan(1)
                     ->schema([
                         TextEntry::make('author.name')
-                            ->url(fn($record) => AuthorResource::getUrl('view', ['record' => $record->author]))
+                            ->url(fn ($record) => AuthorResource::getUrl('view', ['record' => $record->author]))
                             ->label('Author'),
                         TextEntry::make('author.profession')
                             ->label('Profession'),
 
                         ImageEntry::make('author.avatar_url')
                             ->label('Avatar')
-                            ->visible(fn($record) => $record->author->avatar_url),
+                            ->visible(fn ($record) => $record->author->avatar_url),
                     ]),
             ]);
     }
