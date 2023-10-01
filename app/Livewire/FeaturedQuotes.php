@@ -29,7 +29,7 @@ class FeaturedQuotes extends Component
         $this->quotes = cache()->remember(
             key: 'featured-quotes',
             ttl: 60 * 60 * 24,
-            callback: fn() => Quote::all()
+            callback: fn () => Quote::all()
         );
     }
 }

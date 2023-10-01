@@ -21,20 +21,23 @@ class QuoteResource extends Resource
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist
+            ->columns(2)
             ->schema([
-                Section::make([
-                    TextEntry::make('content')
-                        ->columnSpanFull(),
-                ]),
+                Section::make()
+                    ->columnSpan(1)
+                    ->schema([
+                        TextEntry::make('content')
+                            ->columnSpanFull(),
+                    ]),
 
-                Section::make([
-                    TextEntry::make('author.name')
-                        ->columnSpan(1)
-                        ->label('Author'),
-                    TextEntry::make('author.profession')
-                        ->columnSpan(1)
-                        ->label('Author profession'),
-                ])->columns(2),
+                Section::make()
+                    ->columnSpan(1)
+                    ->schema([
+                        TextEntry::make('author.name')
+                            ->label('Author'),
+                        TextEntry::make('author.profession')
+                            ->label('Profession'),
+                    ]),
             ]);
     }
 

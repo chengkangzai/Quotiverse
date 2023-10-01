@@ -12,19 +12,21 @@
 
     <div class="max-w-screen-xl p-4 mx-auto flex flex-col gap-2">
         @foreach($quotes as $quote)
-            <div class="bg-gray-50 rounded py-2 px-8"
-                 data-aos="fade-right"
-                 data-aos-duration="1000">
-                    <p class="text-xl">
+            <a href="{{route('quote',$quote)}}">
+                <div class="bg-gray-50 rounded py-2 px-8"
+                     data-aos="fade-right"
+                     data-aos-duration="1000">
+                    <p class="text-xl leading-relaxed font-medium">
                         {!! $quote->content !!}
                     </p>
-                <div>
-                    <p class="text-gray-700 text-sm">
-                        -- {{$quote->author->name}}
-                        (<span class="text-gray-500 text-xs">{{$quote->author->profession}}</span>)
-                    </p>
+                    <div>
+                        <p class="text-gray-700 text-sm">
+                            -- {{$quote->author->name}}
+                            (<span class="text-gray-500 text-xs">{{$quote->author->profession}}</span>)
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </a>
         @endforeach
     </div>
 
