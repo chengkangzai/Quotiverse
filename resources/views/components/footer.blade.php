@@ -1,4 +1,5 @@
 <footer class="bg-white dark:bg-gray-900">
+    <div class="border-b py-12"></div>
     <div class="max-w-screen-xl mx-auto py-8 px-4 overflow-hidden sm:px-6 lg:px-8">
         <nav class="flex flex-wrap justify-center" aria-label="Footer">
             <p class="text-base text-gray-500 dark:text-gray-400 mr-4">
