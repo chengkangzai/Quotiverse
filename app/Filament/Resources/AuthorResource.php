@@ -11,6 +11,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\HtmlString;
 
 class AuthorResource extends Resource
 {
@@ -27,6 +28,18 @@ class AuthorResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('profession')
                     ->maxLength(255),
+
+                Forms\Components\Section::make('Avatar')
+                    ->columnSpan(1)
+                    ->schema([
+                        Forms\Components\TextInput::make('avatar_url')
+                            ->reactive()
+                            ->label('Avatar URL'),
+
+                        Forms\Components\Placeholder::make('image_preview')
+                            ->visible(fn (Forms\Get $get) => $get('avatar_url') !== null)
+                            ->content(fn (Forms\Get $get) => new HtmlString('<img src="'.$get('avatar_url').'" alt="Avatar" class="w-32 shadow-sm">')),
+                    ]),
             ]);
     }
 
@@ -34,6 +47,8 @@ class AuthorResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\ImageColumn::make('avatar_url')
+                    ->label('Avatar'),
                 Tables\Columns\TextColumn::make('name')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('profession')

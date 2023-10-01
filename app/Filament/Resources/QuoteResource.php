@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\QuoteResource\Pages;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Infolists\Components\ImageEntry;
 use Filament\Infolists\Components\Section;
 use Filament\Infolists\Components\TextEntry;
 use Filament\Infolists\Infolist;
@@ -34,9 +35,14 @@ class QuoteResource extends Resource
                     ->columnSpan(1)
                     ->schema([
                         TextEntry::make('author.name')
+                            ->url(fn($record) => AuthorResource::getUrl('view', ['record' => $record->author]))
                             ->label('Author'),
                         TextEntry::make('author.profession')
                             ->label('Profession'),
+
+                        ImageEntry::make('author.avatar_url')
+                            ->label('Avatar')
+                            ->visible(fn($record) => $record->author->avatar_url),
                     ]),
             ]);
     }

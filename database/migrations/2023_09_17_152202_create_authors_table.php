@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('profession')->nullable();
+            $table->string('avatar_url')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
