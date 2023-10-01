@@ -1,3 +1,3 @@
 <section class="container mx-auto">
-    {{$this->infolist}}
+    {{ $this->infolist }}
 </section>

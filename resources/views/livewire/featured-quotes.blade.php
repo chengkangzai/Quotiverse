@@ -1,28 +1,26 @@
 @php
     /** @var \Illuminate\Support\Collection<\App\Models\Quote> $quotes*/
 @endphp
-<div class="bg-gray-100 dark:bg-gray-800 py-4" id="quotes">
-    <div class="max-w-screen-xl mx-auto">
-        <h2 class="pb-6 font-bold text-3xl underline underline-offset-4 dark:text-gray-200 text-center">
-            <span class="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-sky-500">
+<div class="bg-gray-100 py-4 dark:bg-gray-800" id="quotes">
+    <div class="mx-auto max-w-screen-xl">
+        <h2 class="pb-6 text-center text-3xl font-bold underline underline-offset-4 dark:text-gray-200">
+            <span class="bg-gradient-to-r from-pink-500 to-sky-500 bg-clip-text text-transparent">
                 My Favourite Quotes
             </span>
         </h2>
     </div>
 
-    <div class="max-w-screen-xl p-4 mx-auto flex flex-col gap-2">
-        @foreach($quotes as $quote)
-            <a href="{{route('quote',$quote)}}">
-                <div class="bg-gray-50 rounded py-2 px-8"
-                     data-aos="fade-right"
-                     data-aos-duration="1000">
-                    <p class="text-xl leading-relaxed font-medium">
+    <div class="mx-auto flex max-w-screen-xl flex-col gap-2 p-4">
+        @foreach ($quotes as $quote)
+            <a href="{{ route('quote', $quote) }}">
+                <div class="rounded bg-gray-50 py-2 px-8" data-aos="fade-right" data-aos-duration="1000">
+                    <p class="text-xl font-medium leading-relaxed">
                         {!! $quote->content !!}
                     </p>
                     <div>
-                        <p class="text-gray-700 text-sm">
-                            -- {{$quote->author->name}}
-                            (<span class="text-gray-500 text-xs">{{$quote->author->profession}}</span>)
+                        <p class="text-sm text-gray-700">
+                            -- {{ $quote->author->name }}
+                            (<span class="text-xs text-gray-500">{{ $quote->author->profession }}</span>)
                         </p>
                     </div>
                 </div>
