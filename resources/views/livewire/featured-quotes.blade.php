@@ -20,7 +20,9 @@
                     <div>
                         <p class="text-sm text-gray-700">
                             -- {{ $quote->author->name }}
-                            (<span class="text-xs text-gray-500">{{ $quote->author->profession }}</span>)
+                            @if($quote->author->profession)
+                                (<span class="text-xs text-gray-500">{{ $quote->author->profession }}</span>)
+                            @endif
                         </p>
                     </div>
                 </div>
