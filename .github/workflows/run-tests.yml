@@ -30,7 +30,7 @@ jobs:
           npm ci
           mkdir -p public/build
           chmod -R 777 public/build
-          npm run build --unsafe-perm=true --allow-root
+          npm run build
 
       - name: Setup .env file
         run: |
