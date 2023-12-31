@@ -16,9 +16,6 @@ jobs:
           - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
-    permissions:
-      contents: write
-
     steps:
       - uses: actions/checkout@v3
         with:
@@ -31,7 +28,7 @@ jobs:
       - name: Build Vite assets
         run: |
           npm ci
-          npm run build
+          npm run build --unsafe-perm=true --allow-root
 
       - name: Setup .env file
         run: |
