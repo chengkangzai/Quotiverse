@@ -28,6 +28,8 @@ jobs:
       - name: Build Vite assets
         run: |
           npm ci
+          mkdir -p public/build
+          chmod -R 777 public/build
           npm run build --unsafe-perm=true --allow-root
 
       - name: Setup .env file
