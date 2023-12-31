@@ -11,7 +11,6 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\HtmlString;
 
 class AuthorResource extends Resource
 {
@@ -69,7 +68,7 @@ class AuthorResource extends Resource
                 Tables\Actions\ViewAction::make(),
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make()
-                    ->visible(fn($record) => $record->quotes()->doesntExist()),
+                    ->visible(fn ($record) => $record->quotes()->doesntExist()),
                 Tables\Actions\RestoreAction::make(),
             ])
             ->bulkActions([
