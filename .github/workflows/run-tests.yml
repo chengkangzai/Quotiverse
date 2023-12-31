@@ -4,7 +4,7 @@ jobs:
   phpunit:
     runs-on: ubuntu-latest
     container:
-      image: kirschbaumdevelopment/laravel-test-runner:8.1
+      image: kirschbaumdevelopment/laravel-test-runner:8.2
 
     services:
       mysql:
@@ -27,7 +27,9 @@ jobs:
 
       - name: Build Vite assets
         run: |
-          npm install
+          npm ci
+          mkdir -p public/build
+          chmod -R 777 public/build
           npm run build
 
       - name: Setup .env file
