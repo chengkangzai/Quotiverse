@@ -29,7 +29,7 @@ class BookResource extends Resource
                     ->schema([
                         TextEntry::make('title')
                             ->size('text-2xl'),
-                        TextEntry::make('author')
+                        TextEntry::make('author.name')
                             ->label('Author'),
                         TextEntry::make('publication_year')
                             ->label('Publication Year'),
@@ -46,8 +46,17 @@ class BookResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('author')
-                    ->maxLength(255),
+                Forms\Components\Select::make('author_id')
+                    ->relationship('author', 'name')
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('name')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('profession')
+                            ->maxLength(255),
+                    ])
+                    ->searchable()
+                    ->preload(),
                 Forms\Components\TextInput::make('publication_year')
                     ->maxLength(4),
                 Forms\Components\TextInput::make('isbn')
@@ -62,7 +71,8 @@ class BookResource extends Resource
                 Tables\Columns\TextColumn::make('title')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('author')
+                Tables\Columns\TextColumn::make('author.name')
+                    ->label('Author')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('publication_year')
