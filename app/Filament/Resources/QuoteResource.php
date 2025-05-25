@@ -43,6 +43,17 @@ class QuoteResource extends Resource
                         ImageEntry::make('author.avatar_url')
                             ->label('Avatar')
                             ->visible(fn ($record) => $record->author->avatar_url),
+
+                        TextEntry::make('book.title')
+                            ->label('Book')
+                            ->visible(fn ($record) => $record->book)
+                            ->columnSpanFull(),
+                        TextEntry::make('book.author')
+                            ->label('Book Author')
+                            ->visible(fn ($record) => $record->book && $record->book->author),
+                        TextEntry::make('book.publication_year')
+                            ->label('Publication Year')
+                            ->visible(fn ($record) => $record->book && $record->book->publication_year),
                     ]),
             ]);
     }
@@ -63,6 +74,22 @@ class QuoteResource extends Resource
                             ->maxLength(255),
                     ])
                     ->required(),
+
+                Forms\Components\Select::make('book_id')
+                    ->relationship('book', 'title')
+                    ->searchable()
+                    ->preload()
+                    ->createOptionForm([
+                        Forms\Components\TextInput::make('title')
+                            ->required()
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('author')
+                            ->maxLength(255),
+                        Forms\Components\TextInput::make('publication_year')
+                            ->maxLength(4),
+                        Forms\Components\TextInput::make('isbn')
+                            ->maxLength(20),
+                    ]),
 
                 Forms\Components\MarkdownEditor::make('content')
                     ->required()
@@ -93,12 +120,20 @@ class QuoteResource extends Resource
                 Tables\Columns\TextColumn::make('author.name')
                     ->searchable()
                     ->sortable(),
+                Tables\Columns\TextColumn::make('book.title')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 Tables\Filters\TrashedFilter::make(),
                 Tables\Filters\SelectFilter::make('author_id')
                     ->label('Author')
                     ->relationship('author', 'name')
+                    ->searchable()
+                    ->preload(),
+                Tables\Filters\SelectFilter::make('book_id')
+                    ->label('Book')
+                    ->relationship('book', 'title')
                     ->searchable()
                     ->preload(),
             ])

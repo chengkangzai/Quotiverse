@@ -16,6 +16,7 @@ class Quote extends Model
         'content',
         'author_id',
         'user_id',
+        'book_id',
     ];
 
     public function user(): BelongsTo
@@ -26,5 +27,10 @@ class Quote extends Model
     public function author(): BelongsTo
     {
         return $this->belongsTo(Author::class);
+    }
+
+    public function book(): BelongsTo
+    {
+        return $this->belongsTo(Book::class);
     }
 }

@@ -53,7 +53,7 @@ class QuoteSeeder extends Seeder
         if (! Storage::disk()->exists('ko_wen-je.jpg')) {
             Storage::disk('public')
                 ->put(path: 'ko_wen-je.jpg',
-                    contents: file_get_contents('https://media.licdn.com/dms/image/C5603AQGQbdfbeyQytQ/profile-displayphoto-shrink_800_800/0/1619156814581?e=1701907200&v=beta&t=56va_-L56dbVCwBrOZW-lHGCC1wSlIrda1Mt6z-0U00')
+                    contents: file_get_contents('https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/%E6%9F%AF%E6%96%87%E5%93%B2_IMG_9322-1_%2814300234412%29_%28cropped%29.jpg/250px-%E6%9F%AF%E6%96%87%E5%93%B2_IMG_9322-1_%2814300234412%29_%28cropped%29.jpg')
                 );
         }
 
