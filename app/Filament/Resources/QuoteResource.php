@@ -88,7 +88,7 @@ class QuoteResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('content')
                     ->tooltip(fn (string $state) => $state)
-                    ->limit(30)
+                    ->limit(60)
                     ->searchable(),
                 Tables\Columns\TextColumn::make('author.name')
                     ->searchable()
