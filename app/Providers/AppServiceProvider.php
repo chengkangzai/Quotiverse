@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        TextColumn::configureUsing(function (TextColumn $column) {
+            $column->placeholder('N/A');
+        });
     }
 }
