@@ -1,6 +1,7 @@
 <?php
 
 use App\Livewire\QuotePage;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-\Illuminate\Support\Facades\Auth::loginUsingId(1);
+Auth::loginUsingId(1);
 Route::get('/', function () {
     return view('welcome');
 });
